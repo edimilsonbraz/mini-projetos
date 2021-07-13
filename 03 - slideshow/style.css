@@ -20,7 +20,7 @@
   width: 50vw;  
   height: 50vh;
   border-radius: 10px;
-  overflow: hidden;  /* oaparece somente uma imagem por vez */
+  overflow: hidden; /* aparece somente uma imagem por vez */
 
 }
 
