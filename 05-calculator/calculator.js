@@ -13,7 +13,7 @@ const operacaoPendente = () => operador !== undefined;
 
 const calcular = () => {
   if(operacaoPendente()) {
-    const numeroAtual = parseFloat(display.textContent);
+    const numeroAtual = parseFloat(display.textContent.replace(',', '.'));
     novoNumero = true;
 
     const resultado = eval(`${numeroAnterior}${operador}${numeroAtual}`);
@@ -32,10 +32,10 @@ const calcular = () => {
 
 const atualizarDisplay = (texto) => {
   if(novoNumero) {
-    display.textContent = texto;  //limpa a tela
+    display.textContent = texto.toLocaleString('BR');  //limpa a tela
     novoNumero = false;
   }else{
-    display.textContent += texto;  //concatena
+    display.textContent += texto.toLocaleString('BR');  //concatena
   }
 }
 
@@ -52,8 +52,68 @@ const selecionarOperador = (evento) => {
     calcular()
     novoNumero = true;
     operador = evento.target.textContent;
-    numeroAnterior = parseFloat(display.textContent);
+    numeroAnterior = parseFloat(display.textContent.replace(',', '.'));
   }
 }
 //Evento de click dos operadores chamando a callback selecionarOperador
 operadores.forEach(operador => operador.addEventListener('click', selecionarOperador))
+
+
+const ativarIgual = () => {
+  calcular()
+  operador = undefined;
+}
+//Pega o botão igual chamando uma callback ativarIgual
+document.getElementById('igual').addEventListener('click', ativarIgual);
+
+
+const limparDisplay = () => display.textContent = '';
+
+//Pega o botão limparDisplay e chama uma callback limparDisplay
+document.getElementById('limparDisplay').addEventListener('click', limparDisplay);
+
+
+const limparCalculo = () => {
+  limparDisplay();
+  operador = undefined;
+  novoNumero = true;
+  numeroAnterior = undefined;
+}
+//Pega o botão limparCalculo e chama uma callback limparCalculo
+document.getElementById('limparCalculo').addEventListener('click', limparCalculo);
+
+
+const removerUltimoNumero = () => display.textContent = display.textContent.slice(0, -1)
+//Pega o botão backspace e chama uma callback backspace
+document.getElementById('backspace').addEventListener('click', removerUltimoNumero)
+
+
+const inverterSinal = () => {
+  novoNumero = true;
+  //inverte sinal 
+  atualizarDisplay(display.textContent * -1)
+}
+//Pega o botão iverter e chama uma callback inverter
+document.getElementById('inverter').addEventListener('click', inverterSinal)
+
+
+//Existe Decimal ? retorna true quando for diferente de -1 ou false
+const existeDecimal = () => display.textContent.indexOf(',') !== -1;
+
+// Verifica se existe valor retornando true ou false
+const existeValor = () => display.textContent.length > 0;
+
+const inserirDecimal = () => {
+  if(!existeDecimal()) {
+    if(existeValor()) {
+      atualizarDisplay(',')
+    }else{
+      autualizarDisplay('0,');
+    }
+  }
+}
+document.getElementById('decimal').addEventListener('click', inserirDecimal)
+
+
+
+
