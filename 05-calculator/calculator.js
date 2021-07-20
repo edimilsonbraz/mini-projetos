@@ -116,4 +116,34 @@ document.getElementById('decimal').addEventListener('click', inserirDecimal)
 
 
 
+//Capturar tecla do teclado
+const mapaTeclado = {
+  '0': 'tecla0',
+  '1': 'tecla1',
+  '2': 'tecla2',
+  '3': 'tecla3',
+  '4': 'tecla4',
+  '5': 'tecla5',
+  '6': 'tecla6',
+  '7': 'tecla7',
+  '8': 'tecla8',
+  '9': 'tecla9',
+  '/': 'operadorDividir',
+  '*': 'operadorMultiplicar',
+  '-': 'operadorSubtrair',
+  '+': 'operadorAdicionar',
+  '=': 'igual',
+  'Enter': 'igual',
+  'Backspace': 'backspace',
+  'c': 'limparDisplay',
+  'Escape': 'limparTeclado',
+  ',': 'decimal',
+}
 
+const mapearTeclado = (evento) => {
+  const tecla = evento.key;
+
+  document.getElementById(mapaTeclado[tecla]).click();
+}
+//pegando evento do teclado e chamando uma callback
+document.addEventListener('keydown', mapearTeclado)
