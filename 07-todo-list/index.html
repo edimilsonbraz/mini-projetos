@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-    <title>todo-list</title>
+  <title>todo-list</title>
 </head>
 <body>
-    <div class="todo">
-        <div class="todo__title">
-            TODO - LIST
-        </div>
-
-        <div class="todo__list">
-            <label class="todo__item">
-                <input type="checkbox">
-                <div>teste de item 1</div>
-                <input type="button" value="X">
-            </label>
-            <label class="todo__item">
-                <input type="checkbox">
-                <div>teste de item 2</div>
-                <input type="button" value="X">
-            </label>
-        </div>
-
-        <div class="todo__new-item">
-            <div>&and;</div>
-            <input type="text" placeholder="Digite e pressione enter para adicionar a tarefa">
-            <div>&and;</div>
-        </div>
+  <div class="todo">
+    <div class="todo__title">
+        TODO - LIST
     </div>
-    <script src="app.js"></script>
+
+    <div class="todo__list" id="todoList">
+      
+    
+    </div>
+
+    <div class="todo__new-item">
+      <div>&and;</div>
+        <input type="text" id="newItem" placeholder="Digite e pressione enter para adicionar a tarefa">
+      <div>&and;</div>
+    </div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
